@@ -1,0 +1,28 @@
+<% layout('boilerplate') %>
+
+    <div class="container" style="margin-top:60px;">
+        <div class="row">
+            <% if (message.length > 0 )  {  %>
+                <div class="alert alert-success alert-dismissible">
+                    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times</span>
+                    </button>
+                    <%= message %>
+                </div>
+                <% } %>
+
+                    <p class="pull-right clearfix" style="margin-right:250px;font-size: 50px;">
+                        <%= user.profile.name %>
+                    </p>
+
+                    <img src="<%= user.profile.picture %>" style="height:400px; width:400px;border-radius:20px;" />
+
+        </div>
+
+    </div>
+
+    <style>
+        #footer {
+            position: fixed;
+        }
+    </style>

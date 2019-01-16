@@ -1,0 +1,111 @@
+<% layout('boilerplate') %>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 claass="display-4" style="font-size: 40px;">
+        <b>What to do</b>
+        <span class="txt-type" data-wait="3000" data-words='["LEARN", "CODE", "BUILD PRODUCTS"]'></span>
+      </h1>
+
+      <p>
+        This is the place where we are bringing the instructors and the students together at one place to share and gain knowledge
+        <p>
+          <a class="btn btn-primary btn-lg" href="/courses" role="button">Learn more &raquo;</a>
+        </p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+          <img src="https://image.ibb.co/kMFeV0/43744830.jpg" alt="" style="border-radius:70%; height:200px; width:300px;">
+
+        </p>
+      </div>
+      <div class="col-md-4 col-md-offset-2">
+        <p style="font-size: 17px; line-height:40px;font-family:cursive;">
+          I started off building products which can be scalable.I am founder of
+          <a href="http://webdevforum.herokuapp.com/">WebDevForum</a>. My real passion was learning and integrating different things all together.
+        </p>
+      </div>
+
+    </div>
+
+    <hr>
+
+
+  </div>
+  <!-- /container -->
+
+  <script>
+    class TypeWriter {
+      constructor(txtElement, words, wait = 3000) {
+        this.txtElement = txtElement;
+        this.words = words;
+        this.txt = '';
+        this.wordIndex = 0;
+        this.wait = parseInt(wait, 10);
+        this.type();
+        this.isDeleting = false;
+      }
+
+      type() {
+        // Current index of word
+        const current = this.wordIndex % this.words.length;
+        // Get full text of current word
+        const fullTxt = this.words[current];
+
+        // Check if deleting
+        if (this.isDeleting) {
+          // Remove char
+          this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+          // Add char
+          this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        // Insert txt into element
+        this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+        // Initial Type Speed
+        let typeSpeed = 100;
+
+        if (this.isDeleting) {
+          typeSpeed /= 2;
+        }
+
+        // If word is complete
+        if (!this.isDeleting && this.txt === fullTxt) {
+          // Make pause at end
+          typeSpeed = this.wait;
+          // Set delete to true
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+          this.isDeleting = false;
+          // Move to next word
+          this.wordIndex++;
+          // Pause before start typing
+          typeSpeed = 500;
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
+      }
+    }
+
+
+    // Init On DOM Load
+    document.addEventListener('DOMContentLoaded', init);
+
+    // Init App
+    function init() {
+      const txtElement = document.querySelector('.txt-type');
+      const words = JSON.parse(txtElement.getAttribute('data-words'));
+      const wait = txtElement.getAttribute('data-wait');
+      // Init TypeWriter
+      new TypeWriter(txtElement, words, wait);
+    }
+
+  </script>

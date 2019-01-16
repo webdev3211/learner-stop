@@ -1,0 +1,71 @@
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+
+
+      <a class="navbar-brand" href="/">Learner Stop</a>
+
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="/courses">BROWSE </a>
+      </li>
+
+      <% if (!user) { %>
+        <li>
+          <a href="/login">LOGIN</a>
+        </li>
+        <% } else {  %>
+
+          <% if(user.role === "teacher") {  %>
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                <span class="caret"></span>
+              </a>
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/teacher/dashboard">INSTRUCTOR'S DASHBOARD </a>
+                </li>
+                <li>
+                  <a href="/revenue-report"> REVENUE REPORT</a>
+                </li>
+              </ul>
+
+            </li>
+
+
+            <% } else { %>
+
+              <li>
+                <a href="/become-an-instructor">BECOME AN INSTRUCTOR</a>
+              </li>
+
+              <% } %>
+
+                <li>
+                  <a href="/profile">
+                    <%= user.profile.name %>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="/logout">LOGOUT</a>
+                </li>
+                <% } %>
+
+    </ul>
+
+
+  </div>
+</nav>
+
+<style>
+  .navbar-brand {
+    font-family: Satisfy;
+    color: white;
+    font-weight: bold;
+  }
+</style>
