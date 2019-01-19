@@ -1,13 +1,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var UserSchema = new Schema ({
+var UserSchema = new Schema({
     email: {
         type: String,
         unique: true,
         lowercase: true
     },
-    facebook: String,
+    facebook: {
+        type: String,
+        // unique: true
+    },
 
     tokens: Array,
 
@@ -24,14 +27,14 @@ var UserSchema = new Schema ({
 
     coursesTeach: [{
         course: {
-            type: Schema.Types.ObjectId, 
+            type: Schema.Types.ObjectId,
             ref: 'Course'
         }
     }],
 
     coursesTaken: [{
         course: {
-            type: Schema.Types.ObjectId, 
+            type: Schema.Types.ObjectId,
             ref: 'Course'
         }
     }],

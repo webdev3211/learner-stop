@@ -4,7 +4,6 @@
   "description": "Online learning platform",
   "main": "server.js",
   "scripts": {
-    "test": "node server",
     "start": "node server.js"
   },
   "repository": {

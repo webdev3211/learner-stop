@@ -1,15 +1,33 @@
 <% layout('boilerplate') %>
 
-<div class="row">
-    <div class="col-lg-6 col-md-offset-3">
-        <h2>Login With Facebook</h2>
-        <hr>
+    <div class="row bg">
 
-        <a class="btn btn-block btn-social btn-facebook btn-lg" href="/auth/facebook">
-            <i class="fa fa-facebook"></i>Sign in with Facebook
-        </a>
+        <div class="col-lg-6 col-md-offset-3 text-center" style="margin-top: 100px">
+            <h2 style="color:white; font-weight:bold;">Login With Facebook</h2>
+            <hr>
 
+            <a class="btn btn-block btn-social btn-facebook btn-lg" href="/auth/facebook">
+                <i class="fa fa-facebook"></i>Sign in with Facebook
+            </a>
+
+        </div>
     </div>
-</div>
 
+    <style>
+        #footer {
+            position: fixed;
+        }
 
+        .bg {
+            /* The image used */
+            background-image: url("https://i.ibb.co/YN4B0w1/notebook-1280538-960-720.jpg");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>

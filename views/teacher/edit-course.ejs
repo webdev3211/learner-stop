@@ -22,6 +22,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label for="name">Thumbnail: </label>
+                        <input type="text" class="form-control" autocomplete="off" name="thumbnail" value="<%= course.thumbnail  %>">
+                    </div>
+
+                    <label for="name">Notes: </label>
+                    <textarea name="notes" id="" cols="80" rows="10" autocomplete="off" style="padding: 10px;">
+                            <%= course.notes  %>
+                        </textarea>
+
+                    <div class="form-group">
                         <label for="name">Wistia ID: </label>
                         <input type="text" class="form-control" name="wistiaId" value="<%= course.wistiaId  %>">
                     </div>
@@ -37,6 +47,6 @@
 
     <style>
         #footer {
-            position: fixed;
+            position: relative;
         }
     </style>

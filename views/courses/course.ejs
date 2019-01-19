@@ -1,31 +1,66 @@
 <% layout('boilerplate') %>
 
-<div class="container">
-        <div id="wistia_<%= course.wistiaId %>" class="wistia_embed" style="width:640px;height:480px;" data-video-width="640" data-video-height="480">&nbsp;</div>
-        <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/playlist-v1.js"></script>
-        <script>
-        wistiaPlaylist = Wistia.playlist("<%= course.wistiaId %>", {
-          version: "v1",
-          theme: "tab",
-          videoOptions: {
-            volumeControl: true,
-            playerColor: "54bbff",
-            autoPlay: true,
-            videoWidth: "1000",
-            videoHeight: "750",
-            inlineOptionsOnly: true,
-            version: "v1"
-          },
-          videoFoam: "false",
-          media_0_0: {
-            autoPlay: false,
-            controlsVisibleOnLoad: false
-          },
-          plugin: {
-            "requireEmail-v1": {
-              topText: "Enter your email address\nto view this video."
-            }
+  <div class="container">
+    <div id="wistia_<%= course.wistiaId %>" class="wistia_embed" style="width:1100px;height:510px;" data-video-width="640" data-video-height="480">&nbsp;</div>
+    <script charset="ISO-8859-1" src="//fast.wistia.com/assets/external/playlist-v1.js"></script>
+    <script>
+      wistiaPlaylist = Wistia.playlist("<%= course.wistiaId %>", {
+        version: "v1",
+        theme: "tab",
+        videoOptions: {
+          volumeControl: true,
+          playerColor: "54bbff",
+          autoPlay: true,
+          videoWidth: "1000",
+          videoHeight: "750",
+          inlineOptionsOnly: true,
+          version: "v1"
+        },
+        videoFoam: "false",
+        media_0_0: {
+          autoPlay: false,
+          controlsVisibleOnLoad: false
+        },
+        plugin: {
+          "requireEmail-v1": {
+            topText: "Enter your email address\nto view this video."
           }
-        });
-        </script>
-</div>
+        }
+      });
+    </script>
+  </div>
+
+  <div class="container">
+    <p style="margin: 50px;">
+      <br>
+      <br>
+      <hr>
+      <h3 style="font-weight:bold;font-family: cursive;" class="text-center">
+        Notes for the Series
+      </h3>
+      <br>
+      <br>
+
+      <pre><code class="cc" style="font-size: 1.3em;">
+            <%= course.notes %>
+                
+            </code></pre>
+
+    </p>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('pre cc').each(function (i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
+
+
+  </script>

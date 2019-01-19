@@ -4,26 +4,45 @@
         <div class="row">
             <h2 class="text-center">All Courses</h2>
             <hr>
+            <div id="courses">
 
-            <% for(var i = 0; i < courses.length ; i++){ %>
-                <div class="col-md-4">
-                    <a href="/courses/<%= courses[i]._id %>" style="text-decoration: none; color: #34495e">
-                        <div class="panel panel-default">
-                            <div class="panel-body" style="background-color: #f4f4f4; border: 0px; height: 250px; overflow-y:auto; display:grid; ">
-                                <h4 class="text-center">
+                <% for(var i = 0; i < courses.length ; i++){ %>
+                    <div class="panel panel-default">
+                        <div class="panel-body" style="background-color: #f4f4f4; border: 0px; height: 220px; overflow-y:auto; ">
+                            <h4 class="text-center">
+                                <a href="/courses/<%= courses[i]._id %>" style="text-decoration: none; color: #34495e">
+
                                     <b style="color:gray;">
                                         <%= courses[i].title %>
                                     </b>
-                                </h4>
-                                <p style="color:dimgray; font-family:cursive;font-size: 15px;">
-                                    <%= courses[i].desc %>
-                                </p>
+                                </a>
+                            </h4>
+                            <p style="color:dimgray; font-family:cursive;font-size: 15px;">
+                                <%= courses[i].desc %>
+                            </p>
 
-                            </div>
+
                         </div>
-                    </a>
-                </div>
-                <% } %>
+                        <p>
+                            <img src="<%= courses[i].thumbnail %>" alt="" style="height:220px; width:250px;  width:100%;">
+                        </p>
+
+                    </div>
+                    <% } %>
+            </div>
 
         </div>
     </div>
+
+
+    <style>
+        #courses {
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 3fr);
+            grid-auto-rows: minmax(110px, auto);
+            grid-column-gap: 30px;
+            grid-row-gap: 25px;
+            /* max-width: 20px; */
+        }
+    </style>
