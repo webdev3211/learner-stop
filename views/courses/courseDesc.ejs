@@ -4,7 +4,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-6 col-md-offset-3">
+                <div class="col-lg-3">
                     <form action="/payment" method="POST">
                         <input type="hidden" name="courseId" value="<%= course._id %>" />
                         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_Xzdckhj8eYu5WZM27vedLRwa" data-amount="<%= course.price  %>"
@@ -14,6 +14,24 @@
 
                     </form>
                 </div>
+                <div class="col-lg-5 col-lg-offset-4">
+
+                    <h5>
+                        <b>Course Instructor:</b> &nbsp;&nbsp;
+                        <span style="font-family:cursive;">
+                            <%= foundUser.profile.name %>
+                        </span>
+                        <img src="<%= foundUser.profile.picture %>" alt="" style="border-radius:50%; float:right;" height="80px" width="80px">
+                    </h5>
+                    <%  if(course.createdAt)  { %>
+                        <div style="font-size:1.2em; ">
+                            Course created on
+                            <b>
+                                <%= moment(course.createdAt).format("MMM Do YY") %>
+                            </b>
+                        </div>
+                        <% } %>
+                </div>
             </div>
 
         </div>
@@ -22,34 +40,24 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-7">
-                <h2>Description</h2>
+            <div class="col-lg-9">
+
+                <br/>
+                <h4>Description</h4>
                 <b style="font-weight:bold; font-family:cursive; font-size: 1.2em;">
                     <%=  course.desc %>
                 </b>
             </div>
 
-            <div class="col-lg-5">
-                <h2>Enrolled Students</h2>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Students
-                    </div>
+            <div class="col-lg-3">
 
-                    <div class="panel-body">
-                        <%  if(course.ownByStudent.length == 0)  { %>
-                            <p>0</p>
-                            <% }  else { %>
+                <h5 style="color:grey;" class="text-center">
+                    <i>
+                        Students Enrolled
+                        <%= course.totalStudents %>
+                    </i>
+                </h5>
 
-                                <% for(var i = 0; i< course.ownByStudent.length; i++ ) { %>
-                                    <div class="col-xs-2">
-                                        <img src="<%= course.ownByStudent[i].user.profile.picture %>" />
-                                    </div>
-                                    <% } %>
-
-                                        <% } %>
-                    </div>
-                </div>
             </div>
 
         </div>

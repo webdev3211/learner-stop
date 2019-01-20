@@ -1,6 +1,5 @@
 const https = require('https')
 const fs = require('fs')
-const port = 8080
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var createError = require('http-errors');
@@ -18,7 +17,7 @@ var flash = require('express-flash');
 // var cookieSession = require('cookie-session');
 var passportConfig = require('./config/passport');
 
-
+const port = 8080
 var app = express();
 
 var secret = require('./config/secret');
@@ -26,7 +25,7 @@ var secret = require('./config/secret');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(secret.database);
+mongoose.connect(secret.database, { useNewUrlParser: true });
 
 var db = mongoose.connection;
 

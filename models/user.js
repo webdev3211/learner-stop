@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+// var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({
+var userSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+
     email: {
         type: String,
         unique: true,
@@ -15,6 +17,7 @@ var UserSchema = new Schema({
     tokens: Array,
 
     role: String,
+    channel_name: String,
 
     profile: {
         name: {
@@ -27,25 +30,28 @@ var UserSchema = new Schema({
 
     coursesTeach: [{
         course: {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'Course'
         }
     }],
 
     coursesTaken: [{
         course: {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'Course'
         }
     }],
 
     revenue: [{
         money: Number
-    }]
+    }],
 
+    revenue_total: {
+        type: Number
+    }
 
 
 });
 
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', userSchema);

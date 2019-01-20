@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var CourseSchema = new Schema({
+var courseSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
 
     title: String,
     desc: String,
@@ -17,14 +17,24 @@ var CourseSchema = new Schema({
         default: "https://steemitimages.com/DQmX4sRvLQ2oBN7HNWYKXseAph1q6a9QA5LJcaF5ronsxyD/33.jpg"
     },
     ownByTeacher: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
     ownByStudent: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        // type: Schema.Types.ObjectId,
+        // ref: 'User'
+        // _id: mongoose.Schema.Types.ObjectId,
+        student: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        }
     }],
-    totalStudents: Number,
+
+
+    totalStudents: {
+        type: Number,
+        default: 0
+    },
     createdAt: {
         type: Date,
         default: Date.now
@@ -34,4 +44,4 @@ var CourseSchema = new Schema({
 
 
 
-module.exports = mongoose.model('Course', CourseSchema);
+module.exports = mongoose.model('Course', courseSchema);

@@ -10,19 +10,83 @@
                     <%= message %>
                 </div>
                 <% } %>
+                    <div class="col-md-4">
+                        <img src="<%= user.profile.picture %>" style="height:400px; width:400px;border-radius:50%; " />
 
-                    <p class="pull-right clearfix" style="margin-right:250px;font-size: 50px;">
-                        <%= user.profile.name %>
-                    </p>
+                    </div>
+                    <div class="col-md-6 col-md-offset-2">
+                        <p class="pull-right clearfix" style="margin-right:250px;font-size: 20px;">
 
-                    <img src="<%= user.profile.picture %>" style="height:400px; width:400px;border-radius:20px;" />
+                            <h1>
+                                <b>Basic Information</b>
+                            </h1>
+                            <br>
+                            <br>
+                            <div style="font-size: 1.5em;">
+                                Name: &nbsp;&nbsp;
+                                <span style="font-family: cursive;">
+                                    <%= user.profile.name %>
+                                </span>
+                                <br> Email: &nbsp;&nbsp;
+                                <span style="font-family: cursive;">
+                                    <%= user.email %>
+
+                                </span>
+                            </div>
+                        </p>
+
+                    </div>
+
 
         </div>
 
     </div>
 
+
+    <div class="container" style="margin-top:60px;">
+        <h2 class="text-center">Courses taken</h2>
+        <hr>
+        <div class="row">
+            <div id="courses">
+                <% for(var i = 0; i < foundUser.coursesTaken.length ; i++){ %>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-center">
+                                <a href="/courses/<%= foundUser.coursesTaken[i].course._id %>" style="text-decoration: none; color: #34495e">
+                                    <b style="color:gray;">
+                                        <%= foundUser.coursesTaken[i].course.title %>
+                                    </b>
+                                </a>
+
+                            </h4>
+                        </div>
+                        <div class="panel-body" style="background-color: #f4f4f4; border: 0px; height: 150px; overflow-y:auto; ">
+                            <p style="font-size: 15px; font-family:cursive;">
+                                <%= foundUser.coursesTaken[i].course.desc %>
+                            </p>
+                        </div>
+                        <p>
+                            <img src="<%= foundUser.coursesTaken[i].course.thumbnail %>" alt="" style="height:150px; width:120px;  width:100%;">
+                        </p>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+
+
     <style>
+        #courses {
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 3fr);
+            grid-auto-rows: minmax(110px, auto);
+            grid-column-gap: 30px;
+            grid-row-gap: 25px;
+            /* max-width: 20px; */
+        }
+
         #footer {
-            position: fixed;
+            position: relative;
         }
     </style>

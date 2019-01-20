@@ -10,43 +10,29 @@
         <h2 class="text-center">Courses that you teach</h2>
         <hr>
         <div class="row">
-
             <div id="courses">
-
                 <% for(var i = 0; i < foundUser.coursesTeach.length ; i++){ %>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="text-center">
                                 <a href="/courses/<%= foundUser.coursesTeach[i].course._id %>" style="text-decoration: none; color: #34495e">
-
                                     <b style="color:gray;">
                                         <%= foundUser.coursesTeach[i].course.title %>
                                     </b>
                                 </a>
-
                                 <a href="/edit-course/<%= foundUser.coursesTeach[i].course._id %>" class="pull-right clearfix">
                                     <i class="fa fa-edit" style="font-size:24px; color: green;"></i>
                                 </a>
                             </h4>
-
                         </div>
-
-
-
-                        <div class="panel-body" style="background-color: #f4f4f4; border: 0px; height: 150px; overflow-y:auto; ">
-
-
-
+                        <div class="panel-body" style="background-color: #f4f4f4; border: 0px; height: 200px; overflow-y:auto; ">
                             <p style="font-size: 15px; font-family:cursive;">
                                 <%= foundUser.coursesTeach[i].course.desc %>
                             </p>
-
-
                         </div>
                         <p>
-                            <img src="<%= foundUser.coursesTeach[i].course.thumbnail %>" alt="" style="height:250px; width:250px;  width:100%;">
+                            <img src="<%= foundUser.coursesTeach[i].course.thumbnail %>" alt="" style="height:250px; width:220px;  width:100%;">
                         </p>
-
                     </div>
                     <% } %>
             </div>
@@ -63,5 +49,9 @@
             grid-column-gap: 30px;
             grid-row-gap: 25px;
             /* max-width: 20px; */
+        }
+
+        #footer {
+            position: fixed;
         }
     </style>
