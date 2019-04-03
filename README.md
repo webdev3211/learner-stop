@@ -3,4 +3,9 @@ Online learning platform aimed at bridging the gap between students and teachers
 
 Screenshot
 
-![alt text](https://i.ibb.co/25hLH96/Capture.png)
+All Courses
+![alt text](https://i.ibb.co/k0qMQdH/ls2.png)
+
+
+Course Description
+![alt text](https://i.ibb.co/1m0TZMf/ls3.png)
